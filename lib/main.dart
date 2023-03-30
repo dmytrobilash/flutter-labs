@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Lab2/LB2.dart';
 
 void main() => runApp(MyApp());
 
@@ -99,19 +100,6 @@ class LB1 extends StatelessWidget {
   }
 }
 
-class LB2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Screen Two'),
-      ),
-      body: Center(
-        child: Text('This is Screen Two'),
-      ),
-    );
-  }
-}
 
 class LB3 extends StatelessWidget {
   @override
