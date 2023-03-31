@@ -44,7 +44,7 @@ class LB1 extends StatelessWidget {
                 if(Check().checkInput(_textController1.text, _textController2.text)){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Logged()),
+                    MaterialPageRoute(builder: (context) => Logged(name: _textController1.text, number: _textController2.text, balance: 0 )),
                   );
                 }
                 //BankAccount(ownerName: _textController1.text, accountNumber: _textController2.text, balance: 0);

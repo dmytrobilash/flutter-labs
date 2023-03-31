@@ -4,44 +4,36 @@ class BankAccount {
   String accountNumber;
   double balance;
   List<Deposit> deposits = [];
-  BankAccount({required this.ownerName, required this.accountNumber, required this.balance});
+
+  BankAccount(this.ownerName, this.accountNumber, this.balance);
+
+  void setOnMoney(){
+    balance++;
+  }
+
+  void withdrawMoney() {
+    if (balance - 1 < 0) {
+    }else{
+      balance -= 1;
+    }
+  }
 
   void openDeposit(Deposit deposit) {
     deposits.add(deposit);
-  }
-
-  void accrueInterest() {
-    for (var deposit in deposits) {
-      deposit.accrueInterest();
-    }
-  }
-
-  void depositMoney(double amount) {
-    balance += amount;
-  }
-
-  void withdrawMoney(double amount) {
-    if (balance - amount < 0) {
-      throw InsufficientFundsException();
-    }
-    balance -= amount;
   }
 
   void breakDeposit(int index) {
     deposits.removeAt(index);
   }
 
-  double totalDeposits() {
-    double total = 0;
-    for (var deposit in deposits) {
-      total += deposit.amount;
-    }
-    return total;
-  }
-
   @override
   String toString() {
-    return 'BankAccount{ownerName: $ownerName, accountNumber: $accountNumber, balance: $balance, deposits: $deposits}';
+    double total = 0;
+    for(int i = 0; i < deposits.length; i++){
+      total += deposits[i].amount;
+    }
+    total += balance;
+    return 'BankAccount{ownerName: $ownerName, accountNumber: $accountNumber, balance: $balance, deposits: $deposits, total: $total} ';
   }
 }
 
@@ -51,14 +43,9 @@ class Deposit {
   double interestRate;
 
   Deposit({required this.name, required this.amount, required this.interestRate});
-
-  void accrueInterest() {
-    amount *= (1 + interestRate);
-  }
-
   @override
   String toString() {
-    return 'Deposit{name: $name, amount: $amount, interestRate: $interestRate}';
+    return "name: $name, amount: $amount, rate: $interestRate %";
   }
 }
 
