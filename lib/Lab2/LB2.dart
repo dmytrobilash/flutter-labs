@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:first_lb_flutter/Planets.dart';
-import 'package:first_lb_flutter/Lab2/icons.dart';
+import 'package:first_lb_flutter/Lab2/Planets.dart';
 
 class LB2 extends StatelessWidget { @override
 Widget build(BuildContext context) { return MaterialApp(
@@ -81,7 +80,7 @@ Widget build(BuildContext context) {
                             ),
                           ),
                           subtitle: Padding(
-                              padding: EdgeInsets.only(top: 6.0),
+                              padding: const EdgeInsets.only(top: 6.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -93,7 +92,7 @@ Widget build(BuildContext context) {
                                       color: Color(0xFFBEC1FC),
                                     ),
                                   ),
-                                  SizedBox(height: 10.0),
+                                  const SizedBox(height: 10.0),
                                   Container(
                                     height: 4.0,
                                     width: double.infinity,
@@ -106,15 +105,15 @@ Widget build(BuildContext context) {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 13.0),
+                                  const SizedBox(height: 13.0),
                                   Row(
                                     children: [
-                                      Icon(
-                                        CustomIcon.map_marker,
+                                      const Icon(
+                                        Icons.location_on_outlined,
                                         color: Color(0xFFBEC1FC),
                                         size: 12.0,
                                       ),
-                                      SizedBox(width: 2.0),
+                                      const SizedBox(width: 2.0),
                                       Text(
                                         planet[index].distance,
                                         style: const TextStyle(
@@ -123,13 +122,13 @@ Widget build(BuildContext context) {
                                           color: Color(0xFFBEC1FC),
                                         ),
                                       ),
-                                      SizedBox(width: 15.0),
-                                      Icon(
-                                        CustomIcon.plane_arrival,
-                                        color: Color(0xFFBEC1FC),
+                                      const SizedBox(width: 15.0),
+                                      const Icon(
+                                        Icons.flight_land_outlined,
+                                        color: Color(0xFFBBBEFF),
                                         size: 12.0,
                                       ),
-                                      SizedBox(width: 7.0),
+                                      const SizedBox(width: 7.0),
                                       Text(
                                         planet[index].gravity,
                                         style: const TextStyle(

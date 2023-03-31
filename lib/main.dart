@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Lab1/LB1.dart';
 import 'Lab2/LB2.dart';
 
 void main() => runApp(MyApp());
@@ -38,10 +39,10 @@ class HomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => LB1()),
                 );
               },
-              child: Text('ЛР 1'),
               style: ButtonStyle(
                 fixedSize: MaterialStateProperty.all(Size(200, 60)),
               ),
+              child: const Text('ЛР 1'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -86,19 +87,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class LB1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Screen One'),
-      ),
-      body: Center(
-        child: Text('This is Screen One'),
-      ),
-    );
-  }
-}
+
 
 
 class LB3 extends StatelessWidget {
