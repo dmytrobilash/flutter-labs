@@ -1,9 +1,10 @@
+
 class Port implements Comparable<Port> {
   String name;
   String address;
   int numWorkers;
   int numEquipmentUnits;
-  double costPerUnit;
+  double costPerEquipmentUnit;
   double servicingCost;
   int servicingTime;
   int numDocks;
@@ -13,7 +14,7 @@ class Port implements Comparable<Port> {
     required this.address,
     required this.numWorkers,
     required this.numEquipmentUnits,
-    required this.costPerUnit,
+    required this.costPerEquipmentUnit,
     required this.servicingCost,
     required this.servicingTime,
     required this.numDocks,
@@ -24,7 +25,7 @@ class Port implements Comparable<Port> {
         address = other.address,
         numWorkers = other.numWorkers,
         numEquipmentUnits = other.numEquipmentUnits,
-        costPerUnit = other.costPerUnit,
+        costPerEquipmentUnit = other.costPerEquipmentUnit,
         servicingCost = other.servicingCost,
         servicingTime = other.servicingTime,
         numDocks = other.numDocks;
@@ -41,7 +42,7 @@ class Port implements Comparable<Port> {
 
   double calculateProfits(int numShips) =>
       numShips *
-          (servicingCost + numEquipmentUnits * costPerUnit - numWorkers * 100);
+          (servicingCost + numEquipmentUnits * costPerEquipmentUnit - numWorkers * 100);
 
   bool operator >=(int numShips) => numDocks >= (numShips / 5).ceil();
   bool operator <=(int numShips) => numDocks <= (numShips / 5).ceil();

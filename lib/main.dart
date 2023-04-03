@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Lab1/LB1.dart';
 import 'Lab2/LB2.dart';
+import 'Lab3/LB3.dart';
 
 void main() => runApp(MyApp());
 
@@ -60,7 +61,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LB3()),
+                    MaterialPageRoute(builder: (context) => LB3()),
                 );
               },
               child: Text('ЛР 3'),
@@ -82,23 +83,6 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-
-
-
-class LB3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Screen Three'),
-      ),
-      body: Center(
-        child: Text('This is Screen Three'),
       ),
     );
   }
