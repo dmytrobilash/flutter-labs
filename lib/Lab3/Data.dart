@@ -88,6 +88,7 @@ class Port implements Comparable<Port> {
     return Port.clone(this);
   }
 
+
   void incrementDocks() {
     numDocks++;
     numEquipmentUnits += 5;
@@ -101,6 +102,7 @@ class Port implements Comparable<Port> {
   double calculateProfits(int numShips) =>
       numShips *
           (servicingCost + numEquipmentUnits * costPerEquipmentUnit - numWorkers * 100);
+
 
   bool operator >=(int numShips) => numDocks >= (numShips / 5).ceil();
   bool operator <=(int numShips) => numDocks <= (numShips / 5).ceil();

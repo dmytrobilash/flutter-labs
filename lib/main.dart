@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'Lab1/LB1.dart';
 import 'Lab2/LB2.dart';
 import 'Lab3/LB3.dart';
+import 'Lab4/LB4.dart';
 
 void main() => runApp(MyApp());
 
@@ -83,20 +84,6 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class LB4 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Screen Four'),
-      ),
-      body: Center(
-        child: Text('This is Screen Four'),
       ),
     );
   }

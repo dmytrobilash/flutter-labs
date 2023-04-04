@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'AddPort.dart';
+import 'ChangeSelectedPort.dart';
 import 'Data.dart';
 
 class LB3 extends StatefulWidget {
@@ -10,11 +11,15 @@ class LB3 extends StatefulWidget {
 
 class _PortListScreenState extends State<LB3> {
   late Port _selectedItemForCopying;
+  late Port _selectedItemForComparisonLeft;
+  late Port _selectedItemForComparisonRight;
 
   @override
   void initState() {
     super.initState();
-    _selectedItemForCopying = widget._listPorts.ports.first.copy();
+    _selectedItemForCopying = widget._listPorts.ports.first;
+    _selectedItemForComparisonLeft = widget._listPorts.ports.first;
+    _selectedItemForComparisonRight = widget._listPorts.ports.first;
   }
 
   @override
@@ -37,6 +42,7 @@ class _PortListScreenState extends State<LB3> {
               },
               child: Text('Add new port'),
             ),
+
             SizedBox(height: 16.0),
             DropdownButtonFormField<String>(
               decoration: InputDecoration(
@@ -65,6 +71,19 @@ class _PortListScreenState extends State<LB3> {
               },
               child: Text('Add copied port'),
             ),
+            SizedBox(height: 10.0),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ChangeSelectedPort(port: _selectedItemForCopying)),
+                );
+              },
+              child: Text('Get port details'),
+            ),
+            SizedBox(height: 16.0),
+
+            //2
             SizedBox(height: 16),
             Row(
               children: [
@@ -74,10 +93,10 @@ class _PortListScreenState extends State<LB3> {
                       border: OutlineInputBorder(),
                       labelText: 'First Item',
                     ),
-                    value: _selectedItemForCopying.name,
+                    value: _selectedItemForComparisonLeft.name,
                     onChanged: (value) {
                       setState(() {
-                        _selectedItemForCopying.name = value!;
+                        _selectedItemForComparisonLeft = widget._listPorts.getPort(value!);
                       });
                     },
                     items: widget._listPorts.ports.map((item) {
@@ -95,10 +114,10 @@ class _PortListScreenState extends State<LB3> {
                       border: OutlineInputBorder(),
                       labelText: 'Second Item',
                     ),
-                    value: _selectedItemForCopying.name,
+                    value:  _selectedItemForComparisonRight.name,
                     onChanged: (value) {
                       setState(() {
-                        _selectedItemForCopying.name = value!;
+                        _selectedItemForComparisonRight = widget._listPorts.getPort(value!);
                       });
                     },
                     items: widget._listPorts.ports.map((item) {
@@ -112,13 +131,19 @@ class _PortListScreenState extends State<LB3> {
                 SizedBox(width: 16.0),
                 ElevatedButton(
                   onPressed: () {
-                    // Compare ports button logic
+                    if (_selectedItemForCopying >= 2) {
+                      print('The first port can accommodate at least 20 ships, and the second port can accommodate no more than 10 ships.');
+                    } else {
+                      print('The comparison criteria were not met.');
+                    }
                   },
                   child: Text('Compare Ports'),
                 ),
               ],
             ),
 
+            //3
+            SizedBox(height: 16),
             Row(
               children: [
                 Expanded(
@@ -127,10 +152,10 @@ class _PortListScreenState extends State<LB3> {
                       border: OutlineInputBorder(),
                       labelText: 'First Item',
                     ),
-                    value: _selectedItemForCopying.name,
+                    value: _selectedItemForComparisonLeft.name,
                     onChanged: (value) {
                       setState(() {
-                        _selectedItemForCopying.name = value!;
+                        _selectedItemForComparisonLeft = widget._listPorts.getPort(value!);
                       });
                     },
                     items: widget._listPorts.ports.map((item) {
@@ -148,10 +173,10 @@ class _PortListScreenState extends State<LB3> {
                       border: OutlineInputBorder(),
                       labelText: 'Second Item',
                     ),
-                    value: _selectedItemForCopying.name,
+                    value:  _selectedItemForComparisonRight.name,
                     onChanged: (value) {
                       setState(() {
-                        _selectedItemForCopying.name = value!;
+                        _selectedItemForComparisonRight = widget._listPorts.getPort(value!);
                       });
                     },
                     items: widget._listPorts.ports.map((item) {
@@ -165,7 +190,8 @@ class _PortListScreenState extends State<LB3> {
                 SizedBox(width: 16.0),
                 ElevatedButton(
                   onPressed: () {
-                    // Compare ports button logic
+                    int result = _selectedItemForComparisonLeft.compareTo( _selectedItemForComparisonRight);
+                    print(result);
                   },
                   child: Text('Compare Ports'),
                 ),
