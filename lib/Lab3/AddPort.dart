@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'Data.dart';
 
 class AddPort extends StatefulWidget {
+  final ListPorts listPorts;
+
+  const AddPort({Key? key, required this.listPorts}) : super(key: key);
+
   @override
   AddPortScreen createState() => AddPortScreen();
 }
@@ -18,44 +23,20 @@ class AddPortScreen extends State<AddPort> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Title',
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Address',
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Equipment',
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Cost',
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Cost Processing',
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Num Docs',
-              ),
-            ),
             Spacer(),
             ElevatedButton(
               onPressed: () {
+                Port newPort = Port(
+                  name: "New Port",
+                  address: "New Address",
+                  numWorkers: 0,
+                  numEquipmentUnits: 0,
+                  costPerEquipmentUnit: 0,
+                  servicingCost: 0,
+                  servicingTime: 0,
+                  numDocks: 0,
+                );
+                widget.listPorts.addPort(newPort);
                 Navigator.pop(context);
               },
               child: Text('Add Port'),
